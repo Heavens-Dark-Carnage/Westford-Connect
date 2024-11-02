@@ -53,3 +53,29 @@ function rejectStudent(email) {
         }
     });
 }
+// Add this function to fetch jobs for approval
+function fetchJobs() {
+    fetch('php/fetch_jobs.php')
+        .then(response => response.json())
+        .then(data => {
+            const jobList = document.getElementById('job-list');
+            data.forEach(job => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${job.title}</td>
+                    <td>${job.postedBy}</td>
+                    <td>${job.status}</td>
+                    <td>
+                        <button onclick="approveJob('${job.id}')">Approve</button>
+                        <button onclick="rejectJob('${job.id}')">Reject</button>
+                    </td>
+                `;
+                jobList.appendChild(row);
+            });
+        });
+}
+
+// Call fetchJobs when the admin page loads
+document.addEventListener('DOMContentLoaded', function() {
+    fetchJobs();
+});
