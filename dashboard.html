@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Westford Connect</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Your Dashboard</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="post-job.html">Post a Job</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Complete Your Profile</h2>
+        <form id="profile-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            
+            <label for="course">Course:</label>
+            <input type="text" id="course" required>
+            
+            <label for="resume">Upload Resume:</label>
+            <input type="file" id="resume" required>
+            
+            <button type="submit">Save Profile</button>
+        </form>
+    </main>
+    <footer>&copy; 2024 Westford Connect</footer>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

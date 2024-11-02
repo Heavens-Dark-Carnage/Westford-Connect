@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job - Westford Connect</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Post a Job</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+        </nav>
+    </header>
+    <main>
+        <form id="post-job-form">
+            <label for="job-title">Job Title:</label>
+            <input type="text" id="job-title" required>
+            
+            <label for="job-description">Job Description:</label>
+            <textarea id="job-description" required></textarea>
+            
+            <label for="documents">Upload Verification Documents:</label>
+            <input type="file" id="documents" multiple required>
+            
+            <button type="submit">Submit Job</button>
+        </form>
+    </main>
+    <footer>&copy; 2024 Westford Connect</footer>
+    <script src="js/post-job.js"></script>
+</body>
+</html>
