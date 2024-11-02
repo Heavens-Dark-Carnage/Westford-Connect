@@ -1,34 +1,18 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    margin: 0;
-}
+document.addEventListener("DOMContentLoaded", () => {
+    fetchJobs();
+});
 
-header, footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-}
-
-nav a {
-    color: #fff;
-    margin: 0 10px;
-    text-decoration: none;
-}
-
-main {
-    padding: 20px;
-}
-
-form {
-    max-width: 400px;
-    margin: auto;
-}
-
-form label, form input, form textarea, form button {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
+function fetchJobs() {
+    fetch('data/jobs.json')
+        .then(response => response.json())
+        .then(data => {
+            const jobListContainer = document.getElementById("job-listings");
+            data.forEach(job => {
+                const jobItem = document.createElement("div");
+                jobItem.className = "job-item";
+                jobItem.innerHTML = `<h3>${job.title}</h3><p>${job.description}</p>`;
+                jobListContainer.appendChild(jobItem);
+            });
+        })
+        .catch(error => console.error('Error fetching jobs:', error));
 }
