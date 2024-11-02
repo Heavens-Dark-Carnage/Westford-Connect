@@ -11,15 +11,22 @@
         <h1>Admin Dashboard</h1>
         <nav>
             <a href="index.html">Home</a>
-            <a href="logout.html">Logout</a>
         </nav>
     </header>
     <main>
-        <h2>Registered Students</h2>
-        <div id="student-list"></div>
-
-        <h2>Job Approvals</h2>
-        <div id="job-approvals"></div>
+        <h2>Student Registrations</h2>
+        <table id="student-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Course</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="student-list"></tbody>
+        </table>
     </main>
     <footer>&copy; 2024 Westford Connect</footer>
     <script src="js/admin.js"></script>
