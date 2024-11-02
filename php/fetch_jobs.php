@@ -1,27 +1,24 @@
 <?php
 header('Content-Type: application/json');
 
-$host = 'localhost';
-$db = 'job_portal';
-$user = 'root';
-$pass = 'password';
+// File path
+$jsonFile = '../data/jobs.json';
 
-$conn = new mysqli($host, $user, $pass, $db);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Check if the file exists
+if (!file_exists($jsonFile)) {
+    echo json_encode(["error" => "File not found."]);
+    exit();
 }
 
-$sql = "SELECT title, description FROM jobs";
-$result = $conn->query($sql);
+// Read the JSON file
+$jsonData = file_get_contents($jsonFile);
+$jobs = json_decode($jsonData, true);
 
-$jobs = [];
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $jobs[] = $row;
-    }
-}
+// Filter jobs by status 'pending' for verification
+$pendingJobs = array_filter($jobs, function ($job) {
+    return $job['status'] === 'pending';
+});
 
-echo json_encode($jobs);
-$conn->close();
+// Return the filtered jobs as JSON
+echo json_encode(array_values($pendingJobs));
 ?>
