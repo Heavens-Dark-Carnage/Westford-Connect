@@ -1,36 +1,33 @@
-document.getElementById('register-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
+document.getElementById('registration-form').addEventListener('submit', function(event) {
+    event.preventDefault();
 
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const course = document.getElementById('course').value;
 
-    // Create a registration object
-    const registrationData = {
+    const data = {
         name: name,
         email: email,
         password: password,
         course: course,
-        status: 'pending' // Default status for new users
+        status: 'pending' // Initial status
     };
 
-    // Send the data to the server
-    fetch('php/register.php', {
+    fetch('php/register_student.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(registrationData)
+        body: JSON.stringify(data)
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
             alert('Registration successful! Please wait for admin approval.');
-            window.location.href = 'login.html'; // Redirect to login after registration
+            window.location.href = 'login.html'; // Redirect to login page
         } else {
-            alert('Registration failed: ' + data.error);
+            alert('Registration failed. Please try again.');
         }
-    })
-    .catch(error => console.error('Error:', error));
+    });
 });
