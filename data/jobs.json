@@ -1,10 +1,9 @@
 [
     {
-        "title": "Marketing Intern",
-        "description": "Exciting role for marketing students, located in Dubai. Flexible hours."
-    },
-    {
-        "title": "Junior Software Developer",
-        "description": "Join our team as a junior developer, with opportunities for training in front-end and back-end development."
+        "id": 1,
+        "title": "Software Developer",
+        "description": "Develop and maintain web applications.",
+        "postedBy": "user@example.com",
+        "status": "pending"
     }
 ]
